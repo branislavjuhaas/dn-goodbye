@@ -123,7 +123,7 @@ const nameDay = useNameday(new Date());
           <UPageBody>
             <div class="items-center">
               <p class="text-base font-semibold text-primary text-center">
-                Greetings, martyr! Your sufferance will be over in
+                Greetings, martyr! Your suffering will be over in
               </p>
               <h1
                 class="mt-2 text-4xl sm:text-5xl font-bold text-highlighted text-center text-balance">
