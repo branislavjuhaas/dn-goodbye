@@ -1,23 +1,76 @@
 <script setup lang="ts">
+import { AppTimetableModal } from "#components";
+
 const target = new Date("2026-06-01");
 
-const dates: { date: string; position: number; free: string }[] = (() => {
-  const out: { date: string; position: number; free: string }[] = [];
-  const start = new Date();
-  if (start.getHours() > 15) {
-    start.setDate(start.getDate() + 1);
+const overlay = useOverlay();
+const modal = overlay.create(AppTimetableModal);
+
+const timetableCookie = useCookie<string[]>("timetable");
+
+const openModal = async () => {
+  const instance = modal.open({
+    timetable: timetableCookie.value ? timetableCookie.value : [],
+  });
+
+  const timetableResult = await instance.result;
+
+  console.log(timetableResult);
+
+  if (timetableResult) {
+    timetableCookie.value = timetableResult as any;
   }
+};
 
-  for (let d = new Date(start); d <= target; d.setDate(d.getDate() + 1)) {
-    out.push(useDay(new Date(d)));
-  }
+const subjects = computed(() => {
+  return timetableCookie.value
+    ? useSubjects(timetableCookie.value)
+    : { 0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
+});
 
-  return out;
-})();
+const dates = computed(
+  (): {
+    date: string;
+    position: number;
+    free: string;
+    timetable: string[];
+  }[] => {
+    const out: {
+      date: string;
+      position: number;
+      free: string;
+      timetable: string[];
+    }[] = [];
+    const start = new Date();
+    if (start.getHours() > 15) {
+      start.setDate(start.getDate() + 1);
+    }
 
-const userSubjects = useCookie("subjects");
+    for (let d = new Date(start); d <= target; d.setDate(d.getDate() + 1)) {
+      out.push({
+        ...useDay(new Date(d)),
+        timetable: subjects.value[d.getDay()] || [],
+      });
+    }
 
-const daysRemaining = dates.filter((d) => (d as any).free === "").length;
+    return out;
+  },
+);
+
+const countsOfSubjects = computed(() => {
+  const counts: Record<string, number> = {};
+  dates.value.forEach((d) => {
+    d.timetable.forEach((subject) => {
+      if (!counts[subject]) {
+        counts[subject] = 0;
+      }
+      counts[subject]++;
+    });
+  });
+  return counts;
+});
+
+const daysRemaining = dates.value.filter((d) => (d as any).free === "").length;
 const studyProgress = ((950 - daysRemaining) / 950) * 100;
 const nameDay = useNameday(new Date());
 </script>
@@ -28,7 +81,7 @@ const nameDay = useNameday(new Date());
       <UPage>
         <UContainer>
           <UPageBody>
-            <div class="items-center mt-48">
+            <div class="items-center">
               <p class="text-base font-semibold text-primary text-center">
                 Greetings, martyr! Your sufferance will be over in
               </p>
@@ -36,29 +89,61 @@ const nameDay = useNameday(new Date());
                 class="mt-2 text-4xl sm:text-5xl font-bold text-highlighted text-center text-balance">
                 {{ daysRemaining }} Days
               </h1>
-              <div class="grid grid-cols-3 gap-4 mt-12 max-w-[800px] mx-auto">
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-12 max-w-4xl mx-auto">
                 <UCard variant="subtle">
                   <UProgress v-model="studyProgress" status />
-                  <p class="truncate text-end mt-2 text-sm text-primary">
+                  <p class="truncate w-full mt-1 text-end text-sm text-primary">
                     Study Progres
                   </p>
                 </UCard>
                 <UCard variant="subtle">
-                  <p class="text-center font-medium text-primary text-xl mt-2">
+                  <p class="font-medium text-primary text-xl">
                     {{ nameDay }}
                   </p>
-                  <p class="text-center text-sm text-dimmed">Today's Nameday</p>
+                  <p class="text-sm text-dimmed">Today's nameday</p>
                 </UCard>
-                <UCard variant="subtle">
-                  <template v-if="!userSubjects">
+                <UCard variant="subtle" class="sm:col-span-2">
+                  <template v-if="Object.keys(countsOfSubjects).length > 0">
+                    <div
+                      class="flex flex-row items-center justify-center gap-2 flex-wrap">
+                      <UBadge
+                        v-for="(subject, index) in Object.keys(
+                          countsOfSubjects,
+                        )"
+                        :key="index"
+                        :color="
+                          (countsOfSubjects[subject] ?? 0) >= 40
+                            ? 'error'
+                            : (countsOfSubjects[subject] ?? 0) >= 25
+                              ? 'warning'
+                              : (countsOfSubjects[subject] ?? 0) >= 10
+                                ? 'info'
+                                : 'success'
+                        "
+                        variant="subtle">
+                        <b>{{ subject }}</b>
+                        {{ (countsOfSubjects[subject] ?? 0) * 2 }}
+                      </UBadge>
+                      <UButton
+                        variant="subtle"
+                        icon="ph:projector-screen-chart"
+                        size="xs"
+                        @click="openModal">
+                        <b>EDIT</b>
+                      </UButton>
+                    </div>
+                  </template>
+                  <template v-else>
                     <p class="text-center text-sm text-dimmed">
-                      No subjects set yet.
+                      No subjects set yet
                     </p>
                     <UButton
                       block
                       variant="subtle"
                       icon="ph:projector-screen-chart"
-                      class="mt-4">
+                      class="mt-4"
+                      @click="openModal">
                       Set Subjects
                     </UButton>
                   </template>
