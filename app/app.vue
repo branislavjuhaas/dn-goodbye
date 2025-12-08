@@ -18,7 +18,9 @@ const modal = overlay.create(LazyAppTimetableModal);
  * Persistent cookie that stores the chosen timetable.
  * Type: string[] (array of subject+group identifiers like "MAT1").
  */
-const timetableCookie = useCookie<string[]>("timetable");
+const timetableCookie = useCookie<string[]>("timetable", {
+  maxAge: 34560000,
+});
 
 /**
  * Opens the timetable modal and waits for the result. If the user saves a
