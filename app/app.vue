@@ -154,9 +154,9 @@ const nameDay = useNameday(new Date());
                         )"
                         :key="index"
                         :color="
-                          (countsOfSubjects[subject] ?? 0) >= 40
+                          (countsOfSubjects[subject] ?? 0) >= 30
                             ? 'error'
-                            : (countsOfSubjects[subject] ?? 0) >= 25
+                            : (countsOfSubjects[subject] ?? 0) >= 18
                               ? 'warning'
                               : (countsOfSubjects[subject] ?? 0) >= 10
                                 ? 'info'
