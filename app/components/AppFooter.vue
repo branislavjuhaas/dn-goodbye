@@ -3,7 +3,7 @@ const source = "https://github.com/branislavjuhaas/dn-cascade";
 </script>
 
 <template>
-  <USeparator />
+  <USeparator class="-mb-[1px]" />
   <UFooter>
     <template #left>
       <p class="text-muted text-sm">Copyright © 2025 Branislav Juhás</p>
