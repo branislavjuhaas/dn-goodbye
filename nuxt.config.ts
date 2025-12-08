@@ -4,6 +4,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/ui", "@nuxt/hints"],
   css: ["~/assets/css/main.css"],
+  app: {
+    head: {
+      title: "Goodbye by Juhaas",
+      htmlAttrs: {
+        lang: "en",
+      },
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    },
+  },
   fonts: {
     defaults: {
       weights: [400, 700],
