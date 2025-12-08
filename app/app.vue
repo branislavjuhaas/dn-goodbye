@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { LazyAppTimetableModal } from "#components";
 /**
  * Target date for the countdown (end of whatever is being tracked).
  * Keep as a Date object so computations use local timezone when needed.
@@ -7,11 +8,11 @@ const target = new Date("2026-06-01");
 
 /**
  * Overlay helper + modal instance used to open the timetable editor.
- * overlay.create(AppTimetableModal) returns an object that can open the modal
+ * overlay.create(LazyAppTimetableModal) returns an object that can open the modal
  * and expose a result promise for the selected timetable.
  */
 const overlay = useOverlay();
-const modal = overlay.create(AppTimetableModal);
+const modal = overlay.create(LazyAppTimetableModal);
 
 /**
  * Persistent cookie that stores the chosen timetable.
