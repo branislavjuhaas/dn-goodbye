@@ -31,8 +31,6 @@ const openModal = async () => {
 
   const timetableResult = await instance.result;
 
-  console.log(timetableResult);
-
   if (timetableResult) {
     // Save the returned timetable (array of strings) into the cookie
     timetableCookie.value = timetableResult as any;
