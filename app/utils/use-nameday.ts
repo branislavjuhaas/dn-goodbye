@@ -1,4 +1,5 @@
-export const namedays = {
+export const namedays: Record<string, string | null> = {
+  // region January
   "01-01": null,
   "01-02": "Alexandra, Karina",
   "01-03": "Daniela",
@@ -30,6 +31,8 @@ export const namedays = {
   "01-29": "Gašpar",
   "01-30": "Ema",
   "01-31": "Emil",
+  // endregion
+  // region February
   "02-01": "Tatiana",
   "02-02": "Erika, Erik",
   "02-03": "Blažej",
@@ -58,6 +61,8 @@ export const namedays = {
   "02-26": "Viktor",
   "02-27": "Alexander",
   "02-28": "Zlatica",
+  // endregion
+  // region March
   "02-29": "Radomír",
   "03-01": "Albín",
   "03-02": "Anežka",
@@ -90,6 +95,8 @@ export const namedays = {
   "03-29": "Miroslav",
   "03-30": "Vieroslava",
   "03-31": "Benjamín",
+  // endregion
+  // region April
   "04-01": "Hugo",
   "04-02": "Zita",
   "04-03": "Richard",
@@ -120,6 +127,8 @@ export const namedays = {
   "04-28": "Jarmila",
   "04-29": "Lea",
   "04-30": "Anastázia",
+  // endregion
+  // region May
   "05-01": null,
   "05-02": "Žigmund",
   "05-03": "Galina, Timea",
@@ -151,6 +160,8 @@ export const namedays = {
   "05-29": "Vilma",
   "05-30": "Ferdinand",
   "05-31": "Petrana, Petronela",
+  // endregion
+  // region June
   "06-01": "Žaneta",
   "06-02": "Xénia, Oxana",
   "06-03": "Karolína",
@@ -181,6 +192,8 @@ export const namedays = {
   "06-28": "Beáta",
   "06-29": "Peter, Petra",
   "06-30": "Melánia",
+  // endregion
+  // region July
   "07-01": "Diana",
   "07-02": "Berta",
   "07-03": "Miloslav",
@@ -212,6 +225,8 @@ export const namedays = {
   "07-29": "Marta",
   "07-30": "Libuša",
   "07-31": "Ignác",
+  // endregion
+  // region August
   "08-01": "Božidara",
   "08-02": "Gustáv",
   "08-03": "Jerguš",
@@ -243,6 +258,8 @@ export const namedays = {
   "08-29": "Nikola, Nikolaj",
   "08-30": "Ružena",
   "08-31": "Nora",
+  // endregion
+  // region September
   "09-01": "Drahoslava",
   "09-02": "Linda, Rebeka",
   "09-03": "Belo",
@@ -273,6 +290,8 @@ export const namedays = {
   "09-28": "Václav",
   "09-29": "Michal, Michaela",
   "09-30": "Jarolím",
+  // endregion
+  // region October
   "10-01": "Arnold",
   "10-02": "Levoslav",
   "10-03": "Stela",
@@ -304,6 +323,8 @@ export const namedays = {
   "10-29": "Klára",
   "10-30": "Šimon, Simona",
   "10-31": "Aurélia",
+  // endregion
+  // region November
   "11-01": "Denis, Denisa",
   "11-02": null,
   "11-03": "Hubert",
@@ -334,6 +355,8 @@ export const namedays = {
   "11-28": "Henrieta",
   "11-29": "Vratko",
   "11-30": "Ondrej, Andrej",
+  // endregion
+  // region December
   "12-01": "Edmund",
   "12-02": "Bibiána",
   "12-03": "Oldrich",
@@ -365,9 +388,11 @@ export const namedays = {
   "12-29": "Milada",
   "12-30": "Dávid",
   "12-31": "Silvester",
+  // endregion
 };
 
 export default (day: Date | string) => {
   const date = new Date(day);
-  return namedays[date.getMonth() + "-" + date.getDate()];
+  const key = `${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
+  return namedays[key];
 };
