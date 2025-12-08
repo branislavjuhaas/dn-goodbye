@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const source = "https://github.com/branislavjuhaas/dn-cascade";
-const website = "https://juhaas.eu";
 </script>
 
 <template>
@@ -11,13 +10,7 @@ const website = "https://juhaas.eu";
     </template>
 
     <template #right>
-      <UButton
-        icon="ph:globe-hemisphere-west"
-        color="neutral"
-        variant="ghost"
-        :to="website"
-        target="_blank"
-        aria-label="Website" />
+      <UColorModeButton />
       <UButton
         icon="ph:github-logo"
         color="neutral"
