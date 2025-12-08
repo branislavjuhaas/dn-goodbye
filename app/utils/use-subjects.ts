@@ -200,7 +200,7 @@ export default (timetable: string[]) => {
     if (!match) return;
 
     const [, subject, group] = match;
-    const subjectGroups = subjects[subject];
+    const subjectGroups = subjects[subject as string];
     if (!subjectGroups) return;
 
     const groupKey = Number(group);
