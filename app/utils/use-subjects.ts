@@ -165,6 +165,10 @@ const subjects: Record<string, Record<number, number[]>> = {
   // endregion
 };
 
+/**
+ * Return a flat list of all subject+group codes (uppercase), e.g. ["MAT6", "BIO7"].
+ * This is useful to populate selection components.
+ */
 export const useTimetable = () => {
   return Object.entries(subjects).flatMap(([subject, groups]) =>
     Object.entries(groups).flatMap(([group]) =>
@@ -173,6 +177,12 @@ export const useTimetable = () => {
   );
 };
 
+/**
+ * Convert a list of subject-group strings into a mapping by weekday.
+ * Input: timetable: string[] like ["MAT6", "BIO1"]
+ * Output: Record<number, string[]> where keys are weekday numbers (0..6)
+ * and values are arrays of uppercase timetable entries happening that day.
+ */
 export default (timetable: string[]) => {
   const result: Record<number, string[]> = {
     0: [],

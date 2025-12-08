@@ -47,6 +47,14 @@ const holidays = [
   // endregion
 ];
 
+/**
+ * Given a Date, return a small object describing:
+ * - date: ISO date string (YYYY-MM-DD)
+ * - position: weekday number (0 = Sunday .. 6 = Saturday)
+ * - free: concatenation flags: "e" for weekend, "h" for holiday, "" otherwise
+ *
+ * The holidays array above contains ISO date strings that are treated as full-day holidays.
+ */
 export default (day: Date) => {
   const isoDate = day.toISOString().slice(0, 10);
   const dayOfWeek = day.getDay();

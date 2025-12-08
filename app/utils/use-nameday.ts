@@ -391,6 +391,13 @@ export const namedays: Record<string, string | null> = {
   // endregion
 };
 
+/**
+ * Returns the nameday string (e.g. "John, Jana") for the provided date.
+ * Accepts a Date or string parseable by Date. If no nameday is defined for
+ * the day, returns null.
+ *
+ * Note: namedays is keyed by "MM-DD".
+ */
 export default (day: Date | string) => {
   const date = new Date(day);
   const key = `${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;

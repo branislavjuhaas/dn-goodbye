@@ -1,4 +1,7 @@
 <script setup lang="ts">
+/**
+ * Link to project repository used for the footer GitHub button.
+ */
 const source = "https://github.com/branislavjuhaas/dn-cascade";
 </script>
 

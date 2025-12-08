@@ -1,13 +1,28 @@
 <script setup lang="ts">
-import { AppTimetableModal } from "#components";
-
+/**
+ * Target date for the countdown (end of whatever is being tracked).
+ * Keep as a Date object so computations use local timezone when needed.
+ */
 const target = new Date("2026-06-01");
 
+/**
+ * Overlay helper + modal instance used to open the timetable editor.
+ * overlay.create(AppTimetableModal) returns an object that can open the modal
+ * and expose a result promise for the selected timetable.
+ */
 const overlay = useOverlay();
 const modal = overlay.create(AppTimetableModal);
 
+/**
+ * Persistent cookie that stores the chosen timetable.
+ * Type: string[] (array of subject+group identifiers like "MAT1").
+ */
 const timetableCookie = useCookie<string[]>("timetable");
 
+/**
+ * Opens the timetable modal and waits for the result. If the user saves a
+ * timetable the cookie is updated.
+ */
 const openModal = async () => {
   const instance = modal.open({
     timetable: timetableCookie.value ? timetableCookie.value : [],
@@ -18,16 +33,27 @@ const openModal = async () => {
   console.log(timetableResult);
 
   if (timetableResult) {
+    // Save the returned timetable (array of strings) into the cookie
     timetableCookie.value = timetableResult as any;
   }
 };
 
+/**
+ * subjects computed property maps the stored timetable into a per-day
+ * structure using the useSubjects helper. If no timetable is set, returns
+ * an empty mapping for days 0..6.
+ */
 const subjects = computed(() => {
   return timetableCookie.value
     ? useSubjects(timetableCookie.value)
     : { 0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
 });
 
+/**
+ * dates computed builds the list of days from today (or tomorrow if after 15:00)
+ * up to the target date. Each entry includes ISO date, weekday position, free flags
+ * and the day's timetable subjects (from `subjects`).
+ */
 const dates = computed(
   (): {
     date: string;
@@ -57,6 +83,10 @@ const dates = computed(
   },
 );
 
+/**
+ * countsOfSubjects aggregates how many occurrences a subject has in the date range.
+ * Returned object maps subject string -> count.
+ */
 const countsOfSubjects = computed(() => {
   const counts: Record<string, number> = {};
   dates.value.forEach((d) => {
@@ -70,8 +100,19 @@ const countsOfSubjects = computed(() => {
   return counts;
 });
 
+/**
+ * daysRemaining counts days that are not marked free (free === ""), used in UI.
+ */
 const daysRemaining = dates.value.filter((d) => (d as any).free === "").length;
+
+/**
+ * Simple percentage progress indicator based on a fixed total (950).
+ */
 const studyProgress = ((950 - daysRemaining) / 950) * 100;
+
+/**
+ * Nameday for today (uses useNameday helper)
+ */
 const nameDay = useNameday(new Date());
 </script>
 

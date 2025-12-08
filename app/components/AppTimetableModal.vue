@@ -1,12 +1,24 @@
 <script setup lang="ts">
+/**
+ * Props:
+ * - timetable: initial array of selected subject-group strings (e.g. ["MAT1", "BIO6"])
+ */
 const props = defineProps<{
   timetable: string[];
 }>();
 
+/**
+ * Emits:
+ * - close: emitted with the selected timetable (string[]) when modal closes
+ */
 const emit = defineEmits<{
   close: (timetable: string[]) => void;
 }>();
 
+/**
+ * items: available choices for the checkbox group (populated from useTimetable helper)
+ * value: reactive selection bound to the checkbox group
+ */
 const items = ref(useTimetable());
 const value = ref(props.timetable ?? []);
 </script>
