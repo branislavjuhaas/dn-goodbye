@@ -48,11 +48,12 @@ const holidays = [
 ];
 
 export default (day: Date) => {
+  const isoDate = day.toISOString().slice(0, 10);
   const dayOfWeek = day.getDay();
   const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
-  const isHoliday = holidays.includes(day.toISOString().split("T")[0]);
+  const isHoliday = holidays.includes(isoDate);
   return {
-    date: day.toISOString().split("T")[0],
+    date: isoDate,
     position: dayOfWeek,
     free: `${isWeekend ? "e" : ""}${isHoliday ? "h" : ""}`,
   };
