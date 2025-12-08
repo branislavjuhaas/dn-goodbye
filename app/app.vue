@@ -91,11 +91,10 @@ const dates = computed(
 const countsOfSubjects = computed(() => {
   const counts: Record<string, number> = {};
   dates.value.forEach((d) => {
+    // skip free days (free !== "" means the day is free)
+    if ((d as any).free !== "") return;
     d.timetable.forEach((subject) => {
-      if (!counts[subject]) {
-        counts[subject] = 0;
-      }
-      counts[subject]++;
+      counts[subject] = (counts[subject] ?? 0) + 1;
     });
   });
   return counts;
