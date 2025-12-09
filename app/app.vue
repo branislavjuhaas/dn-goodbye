@@ -4,7 +4,7 @@ import { LazyAppTimetableModal } from "#components";
  * Target date for the countdown (end of whatever is being tracked).
  * Keep as a Date object so computations use local timezone when needed.
  */
-const target = new Date("2026-06-01");
+const target = new Date("2026-05-13");
 
 /**
  * Overlay helper + modal instance used to open the timetable editor.
