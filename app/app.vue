@@ -118,6 +118,13 @@ const nameDay = useNameday(new Date());
 
 <template>
   <UApp>
+    <UBanner
+      v-for="announcement in useAnnouncements(new Date())"
+      icon="ph:confetti-fill"
+      color="warning"
+      :key="announcement"
+      :title="announcement"
+      class="fixed" />
     <UMain class="flex flex-col justify-center">
       <UPage>
         <UContainer>
