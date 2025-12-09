@@ -4,7 +4,7 @@ import { version } from "~~/package.json";
 /**
  * Link to project repository used for the footer GitHub button.
  */
-const source = "https://github.com/branislavjuhaas/dn-cascade";
+const source = "https://github.com/branislavjuhaas/dn-goodbye";
 </script>
 
 <template>
