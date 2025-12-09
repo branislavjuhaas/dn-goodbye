@@ -135,7 +135,7 @@ const nameDay = useNameday(new Date());
                 <UCard variant="subtle">
                   <UProgress v-model="studyProgress" status />
                   <p class="truncate w-full mt-1 text-end text-sm text-primary">
-                    Study Progres
+                    Study progress
                   </p>
                 </UCard>
                 <UCard variant="subtle">
