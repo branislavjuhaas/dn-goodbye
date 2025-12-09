@@ -31,6 +31,14 @@ const holidays = [
   "2026-02-27",
   "2026-02-28",
   // endregion
+  // region EČ MS
+  "2026-03-10",
+  "2026-03-11",
+  // endregion
+  // region Entrance exams
+  "2026-03-23",
+  "2026-03-30",
+  // endregion
   // region Easter break
   "2026-04-02",
   "2026-04-03",
