@@ -163,7 +163,7 @@ const nameDay = useNameday(new Date());
                                 : 'success'
                         "
                         variant="subtle">
-                        <b>{{ subject }}</b>
+                        <b>{{ subject.replace(/[0-9]/g, "") }}</b>
                         {{ (countsOfSubjects[subject] ?? 0) * 2 }}
                       </UBadge>
                       <UButton
