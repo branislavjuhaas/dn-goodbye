@@ -162,7 +162,7 @@ onMounted(() => {
               <div
                 class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-12 max-w-4xl mx-auto">
                 <UCard variant="subtle">
-                  <UProgress v-model="studyProgress" status />
+                  <UProgress :model-value="studyProgress" status />
                   <p class="truncate w-full mt-1 text-end text-sm text-primary">
                     Study progress
                   </p>
