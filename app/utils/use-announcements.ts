@@ -51,8 +51,6 @@ export default (day: Date) => {
       (announcement.date.getTime() - day.getTime()) / (1000 * 3600 * 24),
     );
 
-    console.log(`${announcement.message} - ${diff}`);
-
     if (diff <= 0) {
       continue;
     }
