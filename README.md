@@ -1,4 +1,5 @@
 # DN Goodbye
+
 ![Version 1.25.0.5](https://img.shields.io/badge/Version-2.25.0.5-blue)
 ![MIT License](https://img.shields.io/badge/License-MIT-red)
 ![Nuxt](https://img.shields.io/badge/Nuxt-%231D293D?logo=nuxt&logoColor=%2300DC82&link=https%3A%2F%2Fnuxt.com)
@@ -20,12 +21,15 @@ pnpm install
 ```
 
 ### 2. Run the app
+
 ```bash
 pnpm dev
 ```
+
 then open http://localhost:3000 in your browser.
 
 ### 3. Build for production
+
 ```bash
 pnpm build
 pnpm preview
@@ -33,7 +37,10 @@ pnpm preview
 
 ## Deployment
 
-This project is designed to be deployed to Vercel. Every push to `main` branch will automatically trigger a new deployment.
+This project is designed to be deployed to Cloudflare Workers due to its serverless architecture and blazing-fast edge performance. Cloudflare offers no-config deployment from GitHub repositories.
+
+Every change pushed to the `main` branch is automatically deployed to production.
+
 ## Contributing
 
 Contributions are welcome.
