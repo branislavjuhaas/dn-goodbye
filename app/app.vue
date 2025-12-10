@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { LazyAppTimetableModal } from "#components";
+
+const display = useState(() => Math.floor(900 + Math.random() * 100));
+const gsap = useGSAP();
 /**
  * Target date for the countdown (end of whatever is being tracked).
  * Keep as a Date object so computations use local timezone when needed.
@@ -25,6 +28,8 @@ const timetableCookie = useCookie<string[]>("timetable", {
 /**
  * Opens the timetable modal and waits for the result. If the user saves a
  * timetable the cookie is updated.
+ *
+ * Returns: Promise<void>
  */
 const openModal = async () => {
   const instance = modal.open({
@@ -40,9 +45,10 @@ const openModal = async () => {
 };
 
 /**
- * subjects computed property maps the stored timetable into a per-day
- * structure using the useSubjects helper. If no timetable is set, returns
- * an empty mapping for days 0..6.
+ * subjects computed property
+ * - Maps the stored timetable into a per-day structure using the useSubjects helper.
+ * - If no timetable is set, returns an empty mapping for days 0..6.
+ * Returns: Record<number, string[]>
  */
 const subjects = computed(() => {
   return timetableCookie.value
@@ -51,9 +57,10 @@ const subjects = computed(() => {
 });
 
 /**
- * dates computed builds the list of days from today (or tomorrow if after 15:00)
- * up to the target date. Each entry includes ISO date, weekday position, free flags
- * and the day's timetable subjects (from `subjects`).
+ * dates computed
+ * - Builds the list of days from today (or tomorrow if after 15:00) up to the target date.
+ * - Each entry includes ISO date, weekday position, free flags and day's timetable subjects.
+ * Returns: Array<{ date: string; position: number; free: string; timetable: string[] }>
  */
 const dates = computed(
   (): {
@@ -85,8 +92,9 @@ const dates = computed(
 );
 
 /**
- * countsOfSubjects aggregates how many occurrences a subject has in the date range.
- * Returned object maps subject string -> count.
+ * countsOfSubjects
+ * - Aggregates how many occurrences a subject has in the date range.
+ * - Returned object maps subject string -> count.
  */
 const countsOfSubjects = computed(() => {
   const counts: Record<string, number> = {};
@@ -107,6 +115,7 @@ const daysRemaining = dates.value.filter((d) => (d as any).free === "").length;
 
 /**
  * Simple percentage progress indicator based on a fixed total (950).
+ * NOTE: This is a UI-facing metric. Change the total (950) if project scope changes.
  */
 const studyProgress = ((950 - daysRemaining) / 950) * 100;
 
@@ -114,6 +123,19 @@ const studyProgress = ((950 - daysRemaining) / 950) * 100;
  * Nameday for today (uses useNameday helper)
  */
 const nameDay = useNameday(new Date());
+
+onMounted(() => {
+  const obj = { val: display.value };
+
+  gsap.to(obj, {
+    val: daysRemaining,
+    duration: 3.5 + Math.random(),
+    ease: "expo.out",
+    onUpdate: () => {
+      display.value = Math.round(obj.val);
+    },
+  });
+});
 </script>
 
 <template>
@@ -135,7 +157,7 @@ const nameDay = useNameday(new Date());
               </p>
               <h1
                 class="mt-2 text-4xl sm:text-5xl font-bold text-highlighted text-center text-balance">
-                {{ daysRemaining }} Days
+                {{ display }} Days
               </h1>
               <div
                 class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-12 max-w-4xl mx-auto">
