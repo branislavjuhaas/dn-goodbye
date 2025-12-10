@@ -5,7 +5,7 @@
   "version": "1.25.0.4",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt build --preset=cloudflare_pages",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
