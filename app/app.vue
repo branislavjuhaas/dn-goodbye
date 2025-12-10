@@ -114,15 +114,16 @@ const countsOfSubjects = computed(() => {
 const daysRemaining = dates.value.filter((d) => (d as any).free === "").length;
 
 /**
- * Simple percentage progress indicator based on a fixed total (950).
- * NOTE: This is a UI-facing metric. Change the total (950) if project scope changes.
- */
-const studyProgress = ((950 - daysRemaining) / 950) * 100;
-
-/**
  * Nameday for today (uses useNameday helper)
  */
 const nameDay = useNameday(new Date());
+
+/*
+ * Computed value of the study progress bar (0..100)
+ */
+const progressBarValue = computed(
+  () => (Math.max(950 - display.value, 0) / 950) * 100,
+);
 
 onMounted(() => {
   const obj = { val: display.value };
@@ -162,7 +163,7 @@ onMounted(() => {
               <div
                 class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-12 max-w-4xl mx-auto">
                 <UCard variant="subtle">
-                  <UProgress :model-value="studyProgress" status />
+                  <UProgress v-model="progressBarValue" status />
                   <p class="truncate w-full mt-1 text-end text-sm text-primary">
                     Study progress
                   </p>
