@@ -2,8 +2,11 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", "@nuxt/hints", "v-gsap-nuxt"],
+  modules: ["@nuxt/ui", "@nuxt/hints", "v-gsap-nuxt", "@nuxthub/core"],
   css: ["~/assets/css/main.css"],
+  hub: {
+    analytics: true,
+  },
   app: {
     head: {
       title: "Goodbye by Juhaas",
