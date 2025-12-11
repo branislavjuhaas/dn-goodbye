@@ -18,7 +18,11 @@ const badgeColor = (count: number) => {
     <template v-if="Object.keys(props.countsOfSubjects).length > 0">
       <div class="flex flex-row items-center justify-center gap-2 flex-wrap">
         <UBadge
-          v-for="(subject, index) in Object.keys(props.countsOfSubjects)"
+          v-for="subject in Object.keys(props.countsOfSubjects).sort(
+            (a, b) =>
+              (props.countsOfSubjects[b] ?? 0) -
+              (props.countsOfSubjects[a] ?? 0),
+          )"
           :key="subject"
           :color="badgeColor(props.countsOfSubjects[subject] ?? 0)"
           variant="subtle">
