@@ -27,7 +27,7 @@ const timetableCookie = useCookie<string[]>("timetable", {
 
 /**
  * Opens the timetable modal and waits for the result. If the user saves a
- * timetable the cookie is updated.
+ * timetable, the cookie is updated.
  *
  * Returns: Promise<void>
  */
@@ -141,86 +141,19 @@ onMounted(() => {
 
 <template>
   <UApp>
-    <UBanner
-      v-for="announcement in useAnnouncements(new Date())"
-      icon="ph:confetti-fill"
-      color="warning"
-      :key="announcement"
-      :title="announcement"
-      class="fixed" />
+    <AppAnnouncements />
     <UMain class="flex flex-col justify-center">
       <UPage>
         <UContainer>
           <UPageBody>
-            <div class="items-center">
-              <p class="text-base font-semibold text-primary text-center">
-                Greetings, martyr! Your suffering will be over in
-              </p>
-              <h1
-                class="mt-2 text-4xl sm:text-5xl font-bold text-highlighted text-center text-balance">
-                {{ display }} Days
-              </h1>
-              <div
-                class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-12 max-w-4xl mx-auto">
-                <UCard variant="subtle">
-                  <UProgress v-model="progressBarValue" status />
-                  <p class="truncate w-full mt-1 text-end text-sm text-primary">
-                    Study progress
-                  </p>
-                </UCard>
-                <UCard variant="subtle">
-                  <p class="font-medium text-primary text-xl">
-                    {{ nameDay }}
-                  </p>
-                  <p class="text-sm text-dimmed">Today's nameday</p>
-                </UCard>
-                <UCard variant="subtle" class="sm:col-span-2">
-                  <template v-if="Object.keys(countsOfSubjects).length > 0">
-                    <div
-                      class="flex flex-row items-center justify-center gap-2 flex-wrap">
-                      <UBadge
-                        v-for="(subject, index) in Object.keys(
-                          countsOfSubjects,
-                        )"
-                        :key="index"
-                        :color="
-                          (countsOfSubjects[subject] ?? 0) >= 30
-                            ? 'error'
-                            : (countsOfSubjects[subject] ?? 0) >= 18
-                              ? 'warning'
-                              : (countsOfSubjects[subject] ?? 0) >= 10
-                                ? 'info'
-                                : 'success'
-                        "
-                        variant="subtle">
-                        <b>{{ subject.replace(/[0-9]/g, "") }}</b>
-                        {{ (countsOfSubjects[subject] ?? 0) * 2 }}
-                      </UBadge>
-                      <UButton
-                        variant="subtle"
-                        icon="ph:projector-screen-chart"
-                        size="xs"
-                        @click="openModal">
-                        <b>EDIT</b>
-                      </UButton>
-                    </div>
-                  </template>
-                  <template v-else>
-                    <p class="text-center text-sm text-dimmed">
-                      No subjects set yet
-                    </p>
-                    <UButton
-                      block
-                      variant="subtle"
-                      icon="ph:projector-screen-chart"
-                      class="mt-4"
-                      @click="openModal">
-                      Set Subjects
-                    </UButton>
-                  </template>
-                </UCard>
-              </div>
-            </div>
+            <AppCountdownHero
+              :display="display"
+              :progress-bar-value="progressBarValue"
+              :name-day="nameDay as string">
+              <AppSubjectStats
+                :counts-of-subjects="countsOfSubjects"
+                @edit="openModal" />
+            </AppCountdownHero>
           </UPageBody>
         </UContainer>
       </UPage>
