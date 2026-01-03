@@ -11,7 +11,7 @@ const source = "https://github.com/branislavjuhaas/dn-goodbye";
   <USeparator class="-mb-[1px]" />
   <UFooter>
     <template #left>
-      <p class="text-muted text-sm">Copyright © 2025 Branislav Juhás</p>
+      <p class="text-muted text-sm">Copyright © 2025 - 2026 Branislav Juhás</p>
     </template>
 
     <template #right>
