@@ -2,7 +2,7 @@
   "name": "dn-goodbye",
   "type": "module",
   "author": "Branislav Juhás",
-  "version": "1.25.0.5",
+  "version": "1.26.0.0",
   "private": true,
   "scripts": {
     "build": "nuxt build",
