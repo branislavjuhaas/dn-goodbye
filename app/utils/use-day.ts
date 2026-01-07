@@ -50,9 +50,6 @@ const holidays = [
   // region Labor Day
   "2026-05-01",
   // endregion
-  // region Victory Day
-  "2026-05-08",
-  // endregion
 ];
 
 /**
