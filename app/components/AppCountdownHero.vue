@@ -24,7 +24,7 @@ defineProps<{
         </p>
       </UCard>
       <UCard variant="subtle">
-        <p class="font-medium text-primary text-xl">
+        <p class="font-medium text-primary text-center text-xl">
           {{ nameDay }}
         </p>
         <p class="text-sm text-dimmed">Today's nameday</p>
