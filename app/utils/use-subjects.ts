@@ -117,6 +117,9 @@ const subjects: Record<string, Record<number, number[]>> = {
     25: [5],
     26: [5],
   },
+  flo: {
+    1: [5],
+  },
   // endregion
   // region Kolcún
   apa: {
