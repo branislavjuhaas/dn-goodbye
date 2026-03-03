@@ -117,7 +117,7 @@ const subjects: Record<string, Record<number, number[]>> = {
     25: [5],
     26: [5],
   },
-  flo$: {
+  flo$: {/* use $ for clubs with 1 class per session */
     1: [5],
   },
   // endregion
