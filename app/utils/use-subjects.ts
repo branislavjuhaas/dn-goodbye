@@ -117,7 +117,7 @@ const subjects: Record<string, Record<number, number[]>> = {
     25: [5],
     26: [5],
   },
-  flo: {
+  flo$: {
     1: [5],
   },
   // endregion
@@ -175,7 +175,7 @@ const subjects: Record<string, Record<number, number[]>> = {
 export const useTimetable = () => {
   return Object.entries(subjects).flatMap(([subject, groups]) =>
     Object.entries(groups).flatMap(([group]) =>
-      `${subject}${group}`.toUpperCase(),
+      `${subject.replace(/[_$]/g, "")}${group}`.toUpperCase(),
     ),
   );
 };
@@ -199,7 +199,7 @@ export default (timetable: string[]) => {
 
   timetable.forEach((entry) => {
     // split subject and group. Subject is char part and group is number part, they have variable length
-    const match = entry.toLowerCase().match(/^([a-zA-Z]+)(\d+)$/);
+    const match = entry.toLowerCase().match(/^([^\d]+)(\d+)$/);
     if (!match) return;
 
     const [, subject, group] = match;
