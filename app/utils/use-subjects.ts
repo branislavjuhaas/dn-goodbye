@@ -202,17 +202,26 @@ export default (timetable: string[]) => {
     const match = entry.toLowerCase().match(/^([^\d]+)(\d+)$/);
     if (!match) return;
 
-    const [, subject, group] = match;
-    const subjectGroups = subjects[subject as string];
+    const subject = match[1] ?? "";
+    const group = match[2] ?? "";
+    if (!subject || !group) return;
+    const normalizedSubject = subject.replace(/[_$]/g, "");
+    const subjectKey =
+      Object.keys(subjects).find(
+        (key) =>
+          key === subject || key.replace(/[_$]/g, "") === normalizedSubject,
+      ) ?? "";
+    const subjectGroups = subjects[subjectKey];
     if (!subjectGroups) return;
 
     const groupKey = Number(group);
     const days = subjectGroups[groupKey];
     if (!days) return;
+    const resolvedEntry = `${subjectKey}${group}`.toUpperCase();
 
     days.forEach((day) => {
       if (!result[day]) result[day] = [];
-      result[day].push(entry.toUpperCase());
+      result[day].push(resolvedEntry);
     });
   });
   return result;
