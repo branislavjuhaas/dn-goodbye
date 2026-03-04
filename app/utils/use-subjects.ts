@@ -43,7 +43,7 @@ const subjects: Record<string, Record<number, number[]>> = {
     1: [1],
   },
   inf: {
-    6: [2],
+    8: [2],
   },
   cvp: {
     1: [3],
