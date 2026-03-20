@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { LazyAppTimetableModal } from "#components";
 
+const { t, locale } = useI18n();
+
+useHead(() => ({
+  title: t("meta.title"),
+  htmlAttrs: {
+    lang: locale.value,
+  },
+}));
+
 const display = useState(() => Math.floor(900 + Math.random() * 100));
 const gsap = useGSAP();
 /**

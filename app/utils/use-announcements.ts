@@ -1,43 +1,43 @@
 const announcements = [
   {
     id: "new-year",
-    message: "Happy Holidays! Do not stress about BG MH, chill out.",
+    messageKey: "announcements.newYear",
     date: new Date("2026-01-01"),
     tolerance: 10,
   },
   {
     id: "ecms",
-    message: "M word is coming! Be ready for EČ MS MAT in {days} days.",
+    messageKey: "announcements.ecms",
     date: new Date("2026-03-12"),
     tolerance: 10,
   },
   {
     id: "pfic-p",
-    message: "Prepare for PFIČ in {days} days. Start revising!",
+    messageKey: "announcements.pficPrep",
     date: new Date("2026-04-13"),
     tolerance: 10,
   },
   {
     id: "pfic",
-    message: "PFIČ in progress! Good luck!",
+    messageKey: "announcements.pfic",
     date: new Date("2026-04-18"),
     tolerance: 5,
   },
   {
     id: "ufic-p",
-    message: "ÚFIČ is coming in {days} days. Stay focused!",
+    messageKey: "announcements.uficPrep",
     date: new Date("2026-05-20"),
     tolerance: 10,
   },
   {
     id: "ufic",
-    message: "ÚFIČ is coming in {days} days. Stay focused!",
+    messageKey: "announcements.ufic",
     date: new Date("2026-05-23"),
     tolerance: 3,
   },
   {
     id: "sunset",
-    message: "Due to the author's graduation, this app will be soon sunset.",
+    messageKey: "announcements.sunset",
     date: new Date("2026-06-01"),
     tolerance: 10,
   },
@@ -45,6 +45,7 @@ const announcements = [
 
 export default (day: Date) => {
   const result: string[] = [];
+  const { t } = useI18n();
 
   for (const announcement of announcements) {
     const diff = Math.ceil(
@@ -56,7 +57,7 @@ export default (day: Date) => {
     }
 
     if (diff < announcement.tolerance) {
-      result.push(announcement.message.replace("{days}", diff.toString()));
+      result.push(t(announcement.messageKey, { days: diff }));
     }
   }
 

@@ -4,6 +4,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{ (e: "edit"): void }>();
+const { t } = useI18n();
 
 const badgeColor = (count: number) => {
   if (count >= 30) return "error";
@@ -34,19 +35,19 @@ const badgeColor = (count: number) => {
           icon="ph:projector-screen-chart"
           size="xs"
           @click="emit('edit')">
-          <b>EDIT</b>
+          <b>{{ t("subjects.edit") }}</b>
         </UButton>
       </div>
     </template>
     <template v-else>
-      <p class="text-center text-sm text-dimmed">No subjects set yet</p>
+      <p class="text-center text-sm text-dimmed">{{ t("subjects.noneYet") }}</p>
       <UButton
         block
         variant="subtle"
         icon="ph:projector-screen-chart"
         class="mt-4"
         @click="emit('edit')">
-        Set Subjects
+        {{ t("subjects.set") }}
       </UButton>
     </template>
   </UCard>

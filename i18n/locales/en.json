@@ -1,0 +1,30 @@
+{
+	"meta": {
+		"title": "Goodbye by Juhaas"
+	},
+	"hero": {
+		"greeting": "Greetings, martyr! Your suffering will be over in",
+		"days": "Days",
+		"studyProgress": "Study progress",
+		"todayNameday": "Today's nameday"
+	},
+	"subjects": {
+		"edit": "EDIT",
+		"noneYet": "No subjects set yet",
+		"set": "Set Subjects"
+	},
+	"modal": {
+		"selectYourSubjects": "Select Your Subjects",
+		"subjectsSelected": "{count} subjects selected",
+		"saveSubjects": "Save Subjects"
+	},
+	"announcements": {
+		"newYear": "Happy Holidays! Do not stress about BG MH, chill out.",
+		"ecms": "M word is coming! Be ready for EČ MS MAT in {days} days.",
+		"pficPrep": "Prepare for PFIČ in {days} days. Start revising!",
+		"pfic": "PFIČ in progress! Good luck!",
+		"uficPrep": "ÚFIČ is coming in {days} days. Stay focused!",
+		"ufic": "ÚFIČ is coming in {days} days. Stay focused!",
+		"sunset": "Due to the author's graduation, this app will be soon sunset."
+	}
+}

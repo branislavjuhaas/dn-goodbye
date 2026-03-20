@@ -21,19 +21,20 @@ const emit = defineEmits<{
  */
 const items = ref(useTimetable());
 const value = ref(props.timetable ?? []);
+const { t } = useI18n();
 </script>
 
 <template>
   <UModal
     :close="{ onClick: () => emit('close', props.timetable) }"
-    title="Select Your Subjects">
+    :title="t('modal.selectYourSubjects')">
     <template #body>
       <UCheckboxGroup v-model="value" :items="items" variant="table" />
     </template>
     <template #footer>
       <div class="flex flex-row items-center justify-between w-full gap-2">
-        <p class="text-sm text-dimmed">{{ value.length }} subjects selected</p>
-        <UButton @click="emit('close', value)">Save Subjects</UButton>
+        <p class="text-sm text-dimmed">{{ t("modal.subjectsSelected", { count: value.length }) }}</p>
+        <UButton @click="emit('close', value)">{{ t("modal.saveSubjects") }}</UButton>
       </div>
     </template>
   </UModal>

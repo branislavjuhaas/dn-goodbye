@@ -1,0 +1,30 @@
+{
+	"meta": {
+		"title": "Zbohom od Juhaasa"
+	},
+	"hero": {
+		"greeting": "Vitaj, mučeník! Do Tvojho vykúpenia zostáva",
+		"days": "dní",
+		"studyProgress": "Priebeh prípravy",
+		"todayNameday": "Dnešné meniny"
+	},
+	"subjects": {
+		"edit": "UPRAVIŤ",
+		"noneYet": "Zatiaľ nemáš vybrané predmety",
+		"set": "Vybrať predmety"
+	},
+	"modal": {
+		"selectYourSubjects": "Vyber si predmety",
+		"subjectsSelected": "Počet vybraných predmetov: {count}",
+		"saveSubjects": "Uložiť výber"
+	},
+	"announcements": {
+		"newYear": "Pekné sviatky! Nestresuj sa kvôli BG MH, oddýchni si.",
+		"ecms": "Maturita sa blíži! Na EČ MS MAT ostáva {days} dní.",
+		"pficPrep": "Priprav sa na PFIČ, ostáva {days} dní. Začni opakovať!",
+		"pfic": "PFIČ práve prebieha! Držíme palce!",
+		"uficPrep": "ÚFIČ sa blíži, ostáva {days} dní. Sústreď sa!",
+		"ufic": "ÚFIČ sa blíži, ostáva {days} dní. Sústreď sa!",
+		"sunset": "Kvôli autorovej maturite bude táto aplikácia čoskoro ukončená."
+	}
+}
