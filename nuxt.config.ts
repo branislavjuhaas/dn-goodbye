@@ -9,24 +9,6 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
   },
-  fonts: {
-    defaults: {
-      weights: [400, 700],
-      styles: ["normal", "italic"],
-      subsets: ["latin"],
-    },
-    provider: "google",
-    families: [
-      {
-        name: "DM Sans",
-        weights: ["100 900"],
-        styles: ["normal", "italic"],
-        subsets: ["latin"],
-        preload: true,
-        provider: "google",
-      },
-    ],
-  },
   i18n: {
     defaultLocale: "en",
     locales: [
@@ -40,7 +22,7 @@ export default defineNuxtConfig({
         file: "sk.json",
         domain: "zbohom.juhaas.eu",
       },
-    ]
-    // differentDomains: process.env.NODE_ENV === "production",
+    ],
+    differentDomains: process.env.NODE_ENV === "production",
   },
 });
