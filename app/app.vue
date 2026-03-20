@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { LazyAppTimetableModal } from "#components";
+import * as locales from '@nuxt/ui/locale'
 
 const { t, locale } = useI18n();
 
@@ -149,7 +150,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <UApp>
+  <UApp :locale="locales[locale]">
     <AppAnnouncements />
     <UMain class="flex flex-col justify-center">
       <UPage>
