@@ -23,6 +23,6 @@ export default defineNuxtConfig({
         domain: "zbohom.juhaas.eu",
       },
     ],
-    differentDomains: process.env.NODE_ENV === "production",
+    differentDomains: true
   },
 });
