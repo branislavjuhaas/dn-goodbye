@@ -33,6 +33,7 @@ const modal = overlay.create(LazyAppTimetableModal);
  */
 const timetableCookie = useCookie<string[]>("timetable", {
   maxAge: 34560000,
+  domain: ".juhaas.eu",
 });
 
 /**
