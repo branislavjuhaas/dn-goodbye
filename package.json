@@ -12,6 +12,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@number-flow/vue": "^0.5.0",
     "@nuxt/hints": "1.0.0-alpha.3",
     "@nuxt/ui": "4.2.1",
     "@nuxtjs/i18n": "10.2.3",

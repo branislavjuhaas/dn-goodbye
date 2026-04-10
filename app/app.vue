@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { LazyAppTimetableModal } from "#components";
-import * as locales from '@nuxt/ui/locale'
+import * as locales from "@nuxt/ui/locale";
 
 const { t, locale } = useI18n();
 
@@ -11,8 +11,6 @@ useHead(() => ({
   },
 }));
 
-const display = useState(() => Math.floor(900 + Math.random() * 100));
-const gsap = useGSAP();
 /**
  * Target date for the countdown (end of whatever is being tracked).
  * Keep as a Date object so computations use local timezone when needed.
@@ -128,26 +126,6 @@ const daysRemaining = dates.value.filter((d) => (d as any).free === "").length;
  * Nameday for today (uses useNameday helper)
  */
 const nameDay = useNameday(new Date());
-
-/*
- * Computed value of the study progress bar (0..100)
- */
-const progressBarValue = computed(
-  () => (Math.max(950 - display.value, 0) / 950) * 100,
-);
-
-onMounted(() => {
-  const obj = { val: display.value };
-
-  gsap.to(obj, {
-    val: daysRemaining,
-    duration: 3.5 + Math.random(),
-    ease: "expo.out",
-    onUpdate: () => {
-      display.value = Math.round(obj.val);
-    },
-  });
-});
 </script>
 
 <template>
@@ -158,8 +136,7 @@ onMounted(() => {
         <UContainer>
           <UPageBody>
             <AppCountdownHero
-              :display="display"
-              :progress-bar-value="progressBarValue"
+              :remaining="daysRemaining"
               :name-day="nameDay as string">
               <AppSubjectStats
                 :counts-of-subjects="countsOfSubjects"
