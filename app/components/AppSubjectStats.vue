@@ -28,7 +28,10 @@ const badgeColor = (count: number) => {
           :color="badgeColor(props.countsOfSubjects[subject] ?? 0)"
           variant="subtle">
           <b>{{ subject.replace(/[0-9_$]/g, "") }}</b>
-          {{ (props.countsOfSubjects[subject] ?? 0) * (subject.includes("$") ? 1 : 2) }}
+          {{
+            (props.countsOfSubjects[subject] ?? 0) *
+            (subject.includes("$") ? 1 : 2)
+          }}
         </UBadge>
         <UButton
           variant="subtle"
