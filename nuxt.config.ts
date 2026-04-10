@@ -25,6 +25,6 @@ export default defineNuxtConfig({
         domain: "zbohom.juhaas.eu",
       },
     ],
-    differentDomains: true
+    differentDomains: true,
   },
 });

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { LazyAppTimetableModal } from "#components";
-import * as locales from '@nuxt/ui/locale'
+import * as locales from "@nuxt/ui/locale";
 
 const { t, locale } = useI18n();
 
