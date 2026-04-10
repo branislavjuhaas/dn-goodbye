@@ -33,12 +33,8 @@ const { t } = useI18n();
     </template>
     <template #footer>
       <div class="flex flex-row items-center justify-between w-full gap-2">
-        <p class="text-sm text-dimmed">
-          {{ t("modal.subjectsSelected", { count: value.length }) }}
-        </p>
-        <UButton @click="emit('close', value)">
-          {{ t("modal.saveSubjects") }}
-        </UButton>
+        <p class="text-sm text-dimmed">{{ t("modal.subjectsSelected", { count: value.length }) }}</p>
+        <UButton @click="emit('close', value)">{{ t("modal.saveSubjects") }}</UButton>
       </div>
     </template>
   </UModal>
