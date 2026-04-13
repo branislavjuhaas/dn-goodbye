@@ -20,7 +20,7 @@ const announcements = [
   {
     id: "pfic",
     messageKey: "announcements.pfic",
-    date: new Date("2026-04-18"),
+    date: new Date("2026-04-17"),
     tolerance: 5,
   },
   {
