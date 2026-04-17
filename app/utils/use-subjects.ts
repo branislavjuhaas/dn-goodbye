@@ -104,9 +104,11 @@ const subjects: Record<string, Record<number, number[]>> = {
   // region Gálik
   deu: {
     1: [1, 5],
+    2: [4, 5],
   },
   dku: {
     1: [3, 4],
+    2: [2, 3],
   },
   // endregion
   // region Vantárová/Cerovský
@@ -164,6 +166,14 @@ const subjects: Record<string, Record<number, number[]>> = {
   // region Stankovianska
   saj: {
     1: [5],
+  },
+  // endregion
+  // region Buknová
+  frj: {
+    5: [4, 5],
+  },
+  kfj: {
+    1: [1],
   },
   // endregion
 };
