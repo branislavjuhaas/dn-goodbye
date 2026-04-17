@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "title": "Lebewohl von Juhaas"
+  },
+  "hero": {
+    "greeting": "Willkommen, Märtyrer! Deine Erlösung kommt in",
+    "days": "Tage",
+    "studyProgress": "Studienfortschritt",
+    "todayNameday": "Namenstag heute"
+  },
+  "subjects": {
+    "edit": "BEARBEITEN",
+    "noneYet": "Noch keine Fächer ausgewählt",
+    "set": "Fächer auswählen"
+  },
+  "modal": {
+    "selectYourSubjects": "Wähle deine Fächer",
+    "subjectsSelected": "{count} Fächer ausgewählt",
+    "saveSubjects": "Auswahl speichern"
+  },
+  "announcements": {
+    "newYear": "Frohe Feiertage! Kein Stress wegen BG MH, entspann dich.",
+    "ecms": "Die Matura naht! Noch {days} Tage bis zur EČ MS MAT.",
+    "pficPrep": "Bereite dich auf PFIČ vor, noch {days} Tage. Fang an zu wiederholen!",
+    "pfic": "PFIČ läuft! Viel Glück!",
+    "uficPrep": "ÚFIČ kommt in {days} Tagen. Bleib konzentriert!",
+    "ufic": "ÚFIČ läuft gerade! Viel Glück!",
+    "sunset": "Aufgrund der Matura des Autors wird diese App bald eingestellt."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "title": "Adieu par Juhaas"
+  },
+  "hero": {
+    "greeting": "Bienvenue, martyr! Ta délivrance arrive dans",
+    "days": "jours",
+    "studyProgress": "Progression des études",
+    "todayNameday": "Fête du jour"
+  },
+  "subjects": {
+    "edit": "MODIFIER",
+    "noneYet": "Aucune matière sélectionnée",
+    "set": "Choisir les matières"
+  },
+  "modal": {
+    "selectYourSubjects": "Sélectionne tes matières",
+    "subjectsSelected": "{count} matières sélectionnées",
+    "saveSubjects": "Sauvegarder la sélection"
+  },
+  "announcements": {
+    "newYear": "Joyeuses fêtes! Ne stresse pas pour BG MH, détends-toi.",
+    "ecms": "La remise de diplôme approche! Encore {days} jours avant l'EČ MS MAT.",
+    "pficPrep": "Prépare-toi pour PFIČ, encore {days} jours. Commence à réviser!",
+    "pfic": "PFIČ en cours! Bonne chance!",
+    "uficPrep": "ÚFIČ arrive dans {days} jours. Reste concentré!",
+    "ufic": "ÚFIČ est en cours! Bonne chance!",
+    "sunset": "En raison de la remise de diplôme de l'auteur, cette application sera bientôt abandonnée."
+  }
+}

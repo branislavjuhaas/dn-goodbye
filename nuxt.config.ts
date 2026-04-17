@@ -24,6 +24,16 @@ export default defineNuxtConfig({
         file: "sk.json",
         domain: "zbohom.juhaas.eu",
       },
+      {
+        code: "de",
+        file: "de.json",
+        domain: "lebewohl.juhaas.eu",
+      },
+      {
+        code: "fr",
+        file: "fr.json",
+        domain: "adieu.juhaas.eu",
+      },
     ],
     differentDomains: true,
   },
