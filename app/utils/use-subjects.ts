@@ -168,6 +168,14 @@ const subjects: Record<string, Record<number, number[]>> = {
     1: [5],
   },
   // endregion
+  // region Buknová
+  frj: {
+    5: [4, 5],
+  },
+  kfj: {
+    1: [1],
+  },
+  // endregion
 };
 
 /**
