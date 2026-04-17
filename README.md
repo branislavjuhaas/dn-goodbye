@@ -1,6 +1,6 @@
 # DN Goodbye
 
-![Version 1.26.2.7](https://img.shields.io/badge/Version-1.26.2.7-blue)
+![Version 1.26.3.4](https://img.shields.io/badge/Version-1.26.3.4-blue)
 ![MIT License](https://img.shields.io/badge/License-MIT-red)
 ![Nuxt](https://img.shields.io/badge/Nuxt-%231D293D?logo=nuxt&logoColor=%2300DC82&link=https%3A%2F%2Fnuxt.com)
 ![Nuxt UI](https://img.shields.io/badge/Nuxt%20UI-%23021B23?logo=nuxt&logoColor=%2300DC82&link=https%3A%2F%2Fui.nuxt.com)
